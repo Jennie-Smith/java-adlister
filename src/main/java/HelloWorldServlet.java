@@ -1,7 +1,5 @@
 import java.io.*;
-import javax.servlet.*;
 import javax.servlet.http.*;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
 @WebServlet(name = "HelloWorldServlet", urlPatterns = "/hello")
