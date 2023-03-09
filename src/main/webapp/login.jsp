@@ -30,5 +30,8 @@
         <button type="submit">Login</button>
     </form>
 
+<%--submit to pickcolor as a post
+get color and redirect to viewcolor and add a query color--%>
+
 </body>
 </html>
