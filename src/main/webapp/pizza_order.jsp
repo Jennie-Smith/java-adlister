@@ -18,7 +18,7 @@
 <p>"crust" parameter: <%= request.getParameter("crust") %></p>
 <p>"toppings1" parameter: <%= request.getParameter("toppings") %></p>
 <p>"address" parameter: <%= request.getParameter("address") %></p>
-<form method="POST" action="pizza_order.jsp">
+<form method="POST" action="/pizza-order">
     <select class="form-select" name="crust">
         <option selected>Pizza Crust</option>
         <option value="1">Thin</option>
@@ -40,13 +40,12 @@
     </div>
 
     <div  class="form-group">
-        <label for="login" class="form-label">Address</label>
-        <input type="text" id="login" name="address" class="form-control">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" id="address" name="address" class="form-control">
     </div>
 
     <button type="submit">Get Pizza</button>
 
-    <h1>${PizzaOrder}</h1>
 </form>
 
 </body>
