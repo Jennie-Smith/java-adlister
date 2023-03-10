@@ -16,6 +16,6 @@ public class Album implements Serializable {
     private String artist;
     private String albumName;
     private int releaseDate;
-    private int sales;
+    private double sales;
     private String genre;
 }

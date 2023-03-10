@@ -9,7 +9,7 @@ import java.util.Queue;
 public class BeanTest {
 
     public static void main(String[] args) {
-        Album AbbeyRoad = new Album(1, "Beetles", "AbbeyRoad", 1969, 5, "Rock");
+        Album AbbeyRoad = new Album(1, "Beetles", "AbbeyRoad", 1969, 5.0, "Rock");
         System.out.println(AbbeyRoad);
 
         Author Gaimain = new Author(1, "Neil", "Gaiman");
@@ -22,7 +22,10 @@ public class BeanTest {
 
         GaimanQuotes.add(fairyTales);
         GaimanQuotes.add(love);
-        System.out.println(GaimanQuotes);
+//        System.out.println(GaimanQuotes);
+        for (Quote gaimanQuote : GaimanQuotes) {
+            System.out.println(gaimanQuote);
+        }
 
     }
 }
