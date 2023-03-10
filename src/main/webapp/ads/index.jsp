@@ -14,5 +14,9 @@
 </head>
 <body>
 <h1>Ad Index</h1>
+
+<c:forEach var="ad" items="${ads}">
+    <h2>${ad.title}</h2>
+</c:forEach>
 </body>
 </html>
