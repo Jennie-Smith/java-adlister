@@ -9,9 +9,8 @@
 </head>
 <body>
 <h1>Profile</h1>
-<%--<button type="submit">Login--%>
-<%--<%  response.sendRedirect("/login.jsp"); %>--%>
-<%--</button>--%>
+<p>${login}</p>
+<p>${password}</p>
 
 <%-- this is a JSP comment, you will *not* see this in the html --%>
 

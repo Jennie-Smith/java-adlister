@@ -1,13 +1,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<% String login = request.getParameter("login");
-   String password = request.getParameter("password");
-   if (login != null && login == "admin" && password != null && password == "password"){
-       response.sendRedirect("/profile.jsp");
-   }
+<%--<% String login = request.getParameter("login");--%>
+<%--   String password = request.getParameter("password");--%>
+<%--   if (login != null && login == "admin" && password != null && password == "password"){--%>
+<%--       response.sendRedirect("/profile.jsp");--%>
+<%--   }--%>
 
-%>
+<%--%>--%>
 
 <html>
 <head>
@@ -15,10 +15,9 @@
 </head>
 <body>
     <h1>Login</h1>
-    <p>Path: <%= request.getRequestURL() %></p>
     <p>"login" parameter: <%= request.getParameter("login") %></p>
     <p>"password" parameter: <%= request.getParameter("password") %></p>
-    <form method="POST" action="login.jsp">
+    <form method="POST" action="login">
         <div  class="form-group">
             <label for="login" class="form-label">Username</label>
             <input type="text" id="login" name="login" class="form-control">
