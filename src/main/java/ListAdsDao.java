@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class ListAdsDao implements Ads {
     private List<Ad> ads;
 
