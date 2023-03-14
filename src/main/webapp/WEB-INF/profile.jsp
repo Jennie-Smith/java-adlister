@@ -12,7 +12,8 @@
 
     <div class="container">
         <h1>Viewing your profile.</h1>
-        <p>Welcome! ${username} </p>
+        <p>Welcome ${username}!</p>
+
     </div>
 
 </body>

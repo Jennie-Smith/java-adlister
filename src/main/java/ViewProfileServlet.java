@@ -9,11 +9,15 @@ import java.io.IOException;
 @WebServlet(name = "ViewProfileServlet", urlPatterns = "/profile")
 public class ViewProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HttpSession session = request.getSession();
+        session.getAttribute("username");
 
         if (session.getAttribute("user") == null || !(Boolean) session.getAttribute("user")) {
             response.sendRedirect("/login");
         } else {
+            String username = (String) session.getAttribute("username");
+            request.setAttribute("username", username);
             request.getRequestDispatcher("/WEB-INF/profile.jsp").forward(request, response);
         }
     }
