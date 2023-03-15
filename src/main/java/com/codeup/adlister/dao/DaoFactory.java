@@ -22,4 +22,11 @@ public class DaoFactory {
         }
         return userDao;
     }
+
+    public static void main(String[] args) {
+//        test users dao
+        Users dao = DaoFactory.getUserDao();
+        System.out.println(dao.findByUsername("bob").getUsername());
+
+    }
 }

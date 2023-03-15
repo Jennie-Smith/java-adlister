@@ -30,12 +30,14 @@ public class MySQLUsersDao implements Users{
 //        prepared statment
         PreparedStatement stmt = null;
         try {
-            stmt = connection.prepareStatement("SELECT * FROM users  WHERE name = ?");
+            stmt = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             stmt.setString(1, username);
             ResultSet rs = stmt.executeQuery();
-            return extractUser(rs);
+            rs.next();
+            User user = extractUser(rs);
+            return user;
         } catch (SQLException e) {
-            throw new RuntimeException("Error retrieving all users.", e);
+            throw new RuntimeException("Error retrieving all users: " + username, e);
         }
     }
     private User extractUser(ResultSet rs) throws SQLException {
@@ -52,7 +54,7 @@ public class MySQLUsersDao implements Users{
         PreparedStatement stmt = null;
         try {
 //            this needs to be converted to prepared statement
-            stmt = connection.prepareStatement("INSERT INTO users(name, email, password) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
+            stmt = connection.prepareStatement("INSERT INTO users(username, email, password) VALUES (?,?,?)", Statement.RETURN_GENERATED_KEYS);
             stmt.setString(1, user.getUsername());
             stmt.setString(2, user.getEmail());
             stmt.setString(3, user.getPassword());
