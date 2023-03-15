@@ -1,10 +1,14 @@
 package com.codeup.adlister.controllers;
 
+import com.codeup.adlister.dao.*;
+import com.codeup.adlister.models.User;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "controllers.LoginServlet", urlPatterns = "/login")
@@ -24,14 +28,20 @@ public class LoginServlet extends HttpServlet {
         // TODO: find a record in your database that matches the submitted password
         // TODO: make sure we find a user with that username
         // TODO: check the submitted password against what you have in your database
-        boolean validAttempt = false;
+//        call the Findbyuser function pass it by username
+        Users dao = DaoFactory.getUserDao();
+        User user = dao.findByUsername(username);
+
+        boolean validAttempt = user.getPassword().equals(password);
 
         if (validAttempt) {
             // TODO: store the logged in user object in the session, instead of just the username
-            request.getSession().setAttribute("user", username);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");
         }
     }
+
 }

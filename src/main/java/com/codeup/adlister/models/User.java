@@ -46,4 +46,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public void add(User extractUser) {
+//        what goes in here if needed?
+    }
 }

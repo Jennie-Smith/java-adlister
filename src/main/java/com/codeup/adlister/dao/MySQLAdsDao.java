@@ -3,7 +3,6 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import javax.servlet.jsp.jstl.core.Config;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +22,30 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
+
+    public boolean isValidLoginBetter(String userName, String password){
+        PreparedStatement stmt = null;
+        try {
+            stmt = connection.prepareStatement("SELECT count(id) as count_id FROM users WHERE name = ? AND password = ? ;");
+            stmt.setString(1, userName);
+            stmt.setString(2, password);
+
+//            checks the login username and password and see if they exist or not
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){
+                return false;
+            }
+            if(rs.getInt("count_id") > 0){
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
 //SELECT count(id) as count_id
 //    from users
 //    where name  = 'bob'
@@ -30,6 +53,11 @@ public class MySQLAdsDao implements Ads {
 
 //    old password = 1234
 //    attack pw= 1234' or 1 = 1#
+
+//        " where name = ? " + "and password = ?"
+//        stmt.setString(1, userName);
+//        stmt.getString(2, password);
+
     @Override
     public List<Ad> all() {
         Statement stmt = null;
@@ -45,6 +73,7 @@ public class MySQLAdsDao implements Ads {
     @Override
     public Long insert(Ad ad) {
         try {
+//            this needs to be converted to prepared statement
             Statement stmt = connection.createStatement();
             stmt.executeUpdate(createInsertQuery(ad), Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = stmt.getGeneratedKeys();
