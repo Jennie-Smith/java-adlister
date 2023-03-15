@@ -3,9 +3,7 @@ package com.codeup.adlister.dao;
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.servlet.jsp.jstl.core.Config;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,13 @@ public class MySQLAdsDao implements Ads {
             throw new RuntimeException("Error connecting to the database!", e);
         }
     }
+//SELECT count(id) as count_id
+//    from users
+//    where name  = 'bob'
+//    and password = '1234' or 1 = 1#'    ;
 
+//    old password = 1234
+//    attack pw= 1234' or 1 = 1#
     @Override
     public List<Ad> all() {
         Statement stmt = null;
